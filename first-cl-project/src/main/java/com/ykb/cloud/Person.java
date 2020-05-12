@@ -7,6 +7,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.ykb.cloud.validation.MyValid;
+
 @XmlRootElement
 public class Person {
 
@@ -14,6 +16,7 @@ public class Person {
     @NotEmpty
     private String name;
     @NotEmpty
+    @MyValid(max = 20, min = 5, message = "surname min 5 max 20 olmalı")
     private String surname;
     @Max(value = 120, message = "age 120 den büyük olamaz")
     @Min(value = 10, message = "age 10 dan küçük olamaz")
