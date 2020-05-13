@@ -20,6 +20,8 @@ public class Employee {
     @Past
     private ZonedDateTime birthday;
 
+    private Department    department;
+
     public String getUsername() {
         return this.username;
     }
@@ -66,6 +68,14 @@ public class Employee {
 
     public void setBirthday(final ZonedDateTime birthdayParam) {
         this.birthday = birthdayParam;
+    }
+
+    public Department getDepartment() {
+        return this.department;
+    }
+
+    public void setDepartment(final Department departmentParam) {
+        this.department = departmentParam;
     }
 
 
