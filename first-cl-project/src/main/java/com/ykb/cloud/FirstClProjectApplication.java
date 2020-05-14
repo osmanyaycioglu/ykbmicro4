@@ -3,6 +3,7 @@ package com.ykb.cloud;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,11 +12,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FirstClProjectApplication {
 
     @Autowired
+    @Qualifier("osmanManager")
     private PersonManager personManager;
 
 
     @Autowired
-    public FirstClProjectApplication(final PersonManager pm) {
+    public FirstClProjectApplication(@Qualifier("osmanManager") final PersonManager pm) {
         // pm.addPerson(new Person());
     }
 
@@ -25,6 +27,7 @@ public class FirstClProjectApplication {
     }
 
     @Autowired
+    @Qualifier("osmanManager")
     public void name(final PersonManager pm) {
 
     }

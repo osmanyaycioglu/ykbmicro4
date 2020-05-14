@@ -1,0 +1,5 @@
+FROM openjdk:8-jdk-alpine
+VOLUME [ "/data" ]
+ADD target/first-cl-project-1.0.0.jar /myproject/first-cl-project-1.0.0.jar
+ENV JAVA_OPTS=""
+ENTRYPOINT [ "sh","-c","java ${JAVA_OPTS} -jar /myproject/first-cl-project-1.0.0.jar"]

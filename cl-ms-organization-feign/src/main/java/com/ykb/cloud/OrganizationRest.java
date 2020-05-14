@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.ykb.cloud.event.MyRemoteEvent;
 
 
@@ -39,9 +41,17 @@ public class OrganizationRest {
     private String               dynVal;
 
 
+    @HystrixCommand(fallbackMethod = "helloFallback",
+                    commandProperties = @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",
+                                                         value = "500"))
+
     @GetMapping("/hello")
     public String hello() {
         return this.ec.greet();
+    }
+
+    public String helloFallback() {
+        return "Local hello";
     }
 
     @GetMapping("/dyn")
